@@ -2,7 +2,6 @@
 import LocationsList from '@/components/LocationsList.vue';
 import LocationsRepository from '@/repositories/LocationsRepository';
 
-
 </script>
 
 <template>
@@ -21,7 +20,7 @@ export default {
   }),
   mounted: function() {
     new LocationsRepository().getAll().then((response) => {
-      this.locations = response;
+      this.locations = response;      
     })
   }
 }

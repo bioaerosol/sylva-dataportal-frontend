@@ -1,13 +1,13 @@
 <template>
   <div class="row">
-    <div v-for="location in locations" :key="location.code" class="col-3">
+    <loading-widget :isLoading="locations.length === 0" />
+    <div v-for="location in locations" :key="location.code" class="col-12 col-md-6 col-lg-4 mt-4">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title d-flex align-items-center"><img :src="flagUrls[location.country]" class="flag me-2" />{{ location.name }}</h5>
           <div class="card-text">
-            <h6>Devices</h6>
-            <div v-for="device in location.devices" :key="device.id">
-              <device-overview-tile :device="device" />
+            <div v-for="device in location.devices" :key="device.id" class="mt-4">
+              <device-tile :device="device" />
             </div>
           </div>
         </div>
@@ -26,12 +26,14 @@ export default {
 
 <style scoped>
 .flag {
-  height: 2em;
+  height: 1em;
+  border: 1px solid var(--bs-secondary);
 }
 </style>
 
 <script setup>
-import DeviceOverviewTile from '@/components/DeviceOverviewTile.vue'
+import DeviceTile from '@/components/device/DeviceTile.vue'
+import LoadingWidget from '@/components/utils/LoadingWidget.vue';
 
 const flagUrls = {
   DE: new URL('../assets/flags/DE.png', import.meta.url).href,

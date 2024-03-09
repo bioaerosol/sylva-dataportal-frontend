@@ -1,6 +1,7 @@
 <script setup>
-import LocationsList from '@/components/LocationsList.vue';
-import LocationsRepository from '@/repositories/LocationsRepository';
+import LocationsList from '@/components/LocationsList.vue'
+import LocationsRepository from '@/repositories/LocationsRepository'
+import * as _ from "lodash-es"
 
 </script>
 
@@ -20,7 +21,7 @@ export default {
   }),
   mounted: function() {
     new LocationsRepository().getAll().then((response) => {
-      this.locations = response;      
+      this.locations = _.sortBy(response, ['country', 'name']);;      
     })
   }
 }

@@ -10,14 +10,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+          <li class="nav-item me-3">
+            <router-link to="/dashboard" class="nav-link"><font-awesome-icon :icon="['fas', 'gauge-high']" class="me-2" />Dashboard</router-link>
+          </li>
+          <li class="nav-item me-3">
+            <router-link to="/devices" class="nav-link"><font-awesome-icon :icon="['fas', 'desktop']" class="me-2"/>Device Overview</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/devices" class="nav-link">Device Overview</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/download" class="nav-link">Level-0 Data Download</router-link>
+            <router-link to="/download" class="nav-link"><font-awesome-icon :icon="['fas', 'download']" class="me-2"/>Level-0 Data Download</router-link>
           </li>
         </ul>
       </div>

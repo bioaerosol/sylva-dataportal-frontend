@@ -1,6 +1,6 @@
 <template>
   <!--<storage-by-device-doughnut-chart :timelineData="timelineData" />-->
-  <div class="alert alert-primary" role="alert">Dashboard capabilities are in implementation phase. Stay tuned for updates.</div>
+  <div class="alert alert-primary" role="alert"><font-awesome-icon :icon="['fas', 'person-digging']" class="me-2" />Dashboard capabilities are in implementation phase. Stay tuned for updates.</div>
 </template>
 
 <script setup>

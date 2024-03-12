@@ -81,6 +81,7 @@ export default {
             }
           },
           y: {
+            min: 0,
             ticks: {
               callback: function (value) {
                 return (Math.round(bytesToGibs(value) * 100) / 100).toLocaleString(import.meta.env.VITE_LOCALE)

@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="mt-3">
-      <div class="subheader">Data Size</div>
+      <div class="subheader">Level-0 Data Size</div>
       <div class="subtext">
         <b>Total</b>: {{ totalSize }}
         <storage-by-month-chart class="mt-2" :timelineData="timelineData" />

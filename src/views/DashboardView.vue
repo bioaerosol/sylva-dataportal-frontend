@@ -1,27 +1,23 @@
-<script setup>
-import LocationsList from '@/components/LocationsList.vue'
-import LocationsRepository from '@/repositories/LocationsRepository'
-import * as _ from "lodash-es"
-
-</script>
-
 <template>
-  <main>
-    <LocationsList :locations="locations" />
-  </main>
+  <!--<storage-by-device-doughnut-chart :timelineData="timelineData" />-->
+  <div class="alert alert-primary" role="alert">Dashboard capabilities are in implementation phase. Stay tuned for updates.</div>
 </template>
 
+<script setup>
+
+import { TimelineRepository, TimelineResolution } from '@/repositories/TimelineRepository'
+</script>
 <script>
 export default {
   components: {
-    LocationsList: LocationsList
+    //'storage-by-device-doughnut-chart': StorageByDeviceDoughnutChart
   },
   data: () => ({
-    locations: []
+    timelineData: []
   }),
-  mounted: function() {
-    new LocationsRepository().getAll().then((response) => {
-      this.locations = _.sortBy(response, ['country', 'name']);;      
+  mounted: function () {
+    new TimelineRepository().getTimeline(TimelineResolution.YEAR).then((response) => {
+      this.timelineData = response
     })
   }
 }

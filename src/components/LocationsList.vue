@@ -5,6 +5,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title d-flex align-items-center"><img :src="flagUrls[location.country]" class="flag me-2" />{{ location.name }}</h5>
+          <ebas-link :ebasCode="location.ebasCode" />
           <div class="card-text">
             <div v-for="device in location.devices" :key="device.id" class="mt-4">
               <device-tile :device="device" />
@@ -18,6 +19,9 @@
 
 <script>
 export default {
+  components: {
+    "ebas-link": EBASLink
+  },
   props: {
     locations: Array
   }
@@ -33,7 +37,8 @@ export default {
 
 <script setup>
 import DeviceTile from '@/components/device/DeviceTile.vue'
-import LoadingWidget from '@/components/utils/LoadingWidget.vue';
+import LoadingWidget from '@/components/utils/LoadingWidget.vue'
+import EBASLink from '@/components/EBASLink.vue'
 
 const flagUrls = {
   DE: new URL('../assets/flags/DE.png', import.meta.url).href,

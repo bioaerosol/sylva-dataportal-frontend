@@ -1,9 +1,27 @@
 <template>
-  <nav class="navbar">
-    <a class="navbar-brand d-flex align-items-center">
-      <img id="logo" src="@/assets/sylva.png" class="d-inline-block align-top ms-2" alt="SYLVA Logo" />
-      <span class="ms-3">SYLVA Data Portal</span>
-    </a>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center me-5">
+        <img id="logo" src="@/assets/sylva.png" class="d-inline-block align-top ms-2" alt="SYLVA Logo" />
+        <span class="ms-3">SYLVA Data Portal</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/devices" class="nav-link">Device Overview</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/download" class="nav-link">Level-0 Data Download</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </template>
 

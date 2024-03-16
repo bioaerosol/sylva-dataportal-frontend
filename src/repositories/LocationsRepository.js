@@ -7,7 +7,7 @@ class LocationsRepository {
 
   getAll() {
     const _deferred = $.Deferred()
-    const _t = this.target + '/locations'
+    const _t = this.target + '/location'
 
     $.ajax({
       url: _t,

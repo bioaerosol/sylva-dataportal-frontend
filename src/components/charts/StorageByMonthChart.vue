@@ -1,15 +1,14 @@
-<template>
-  <line-chart :data="chartData" :options="options" />
-</template>
-
 <script setup>
 import { CategoryScale, Chart as ChartJS, Filler, LineElement, LinearScale, PointElement, TimeScale } from 'chart.js'
 import { Line } from 'vue-chartjs'
-import { DateTime } from 'luxon'
 import * as _ from 'lodash-es'
 import 'chartjs-adapter-luxon'
 import { bytesToGibs } from '@/utils/Converter'
 </script>
+
+<template>
+  <line-chart :data="chartData" :options="options" />
+</template>
 
 <script>
 ChartJS.register(CategoryScale, LinearScale, TimeScale, PointElement, LineElement, Filler)
@@ -19,35 +18,14 @@ export default {
     'line-chart': Line
   },
   props: {
-    timelineData: Array,
-    monthlyTimelines: Array
+    timelineData: Array
   },
   computed: {
     chartData: function () {
-      const sortedData = _.sortBy(
-        _.map(this.timelineData, (tld) => {
-          return {
-            date: DateTime.fromISO(tld.date),
-            size: tld.size
-          }
-        }),
-        'date'
-      )
-
-      const firstDatasetDate = sortedData.length > 0 ? sortedData[0].date : DateTime.now()
-
-      const monthsToTimelineStart = firstDatasetDate.diff(DateTime.fromISO(import.meta.env.VITE_TIMELINE_DATA_START), 'months').months
-      for (let i = 0; i <= monthsToTimelineStart; i++) {
-        sortedData.unshift({
-          date: firstDatasetDate.minus({ months: i }),
-          size: null
-        })
-      }
-
       return {
         datasets: [
           {
-            data: sortedData
+            data: _.sortBy(this.timelineData, 'date')
           }
         ]
       }

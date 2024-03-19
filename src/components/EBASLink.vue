@@ -16,7 +16,7 @@ export default {
   props: {
     ebasCode: {
       type: String,
-      required: true
+      required: false
     },
     from: { 
         type: DateTime, 

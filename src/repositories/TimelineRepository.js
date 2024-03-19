@@ -11,16 +11,24 @@ class TimelineRepository {
     this.target = import.meta.env.VITE_API_BASE + "/data/timeline"
   }
 
-  getTimeline(/** @type TimelineResolution */ timelineResolution = TimelineResolution.YEAR, /** @type string */ deviceId) {
+  getTimeline(/** @type TimelineResolution */ timelineResolution = TimelineResolution.YEAR, /** @type object */ deviceId, /** @type DateTime */ from, /** @type DateTime */ to) {
     const _deferred = $.Deferred()
     const _t = this.target
+
+    if (deviceId) {
+      if (Array.isArray(deviceId)) {
+        deviceId = deviceId.join(',')
+      }
+    }
 
     $.ajax({
       url: _t,
       dataType: "json",
       data: {
         resolution: timelineResolution,
-        devices: deviceId
+        devices: deviceId,
+        from: (from ? from.toISODate() : undefined),
+        to: (to ? to.toISODate() : undefined)
       },
       headers: {
         Accept: "application/json"

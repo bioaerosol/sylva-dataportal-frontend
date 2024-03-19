@@ -41,7 +41,15 @@ export default {
   }),
   mounted: function () {
     new TimelineRepository().getTimeline(TimelineResolution.MONTH, this.device._id).then((response) => {
-      this.timelineData = response
+      const data = _.map(response, (tld) => {
+          return {
+            date: DateTime.fromISO(tld.date),
+            size: tld.size
+          }
+        })
+
+      fillMissing(data, "date", DateTime.fromISO(import.meta.env.VITE_TIMELINE_DATA_START), DateTime.now(), "month")
+      this.timelineData = data
     })
   },
   computed: {
@@ -95,4 +103,6 @@ import { TimelineRepository, TimelineResolution } from '@/repositories/TimelineR
 import StorageByMonthChart from '@/components/charts/StorageByMonthChart.vue'
 import { bytesToGibs } from '@/utils/Converter'
 import { formatGiBs } from '@/utils/Fomatter'
+import { fillMissing } from '@/utils/Date'
+import * as _ from 'lodash-es'
 </script>

@@ -25,6 +25,8 @@
       <p class="card-text mt-3">Please note that your download is not password-protected. This is not required as SYLVA data is open to public.</p>
     </div>
   </div>
+
+  <div v-if="workspace === undefined" class="alert alert-danger mt-4" role="alert"><font-awesome-icon :icon="['fas', 'robot']" class="me-2" />The document you are looking for is not here (anymore). Please check your URL.</div>
 </template>
 
 <script setup>
@@ -59,6 +61,8 @@ export default {
         if (this.workspaceId) {
           new WorkspaceRepository().get(this.workspaceId).then((response) => {
             this.workspace = response
+          }).catch(() => {
+            this.workspace = undefined
           })
         }
       },

@@ -14,10 +14,10 @@
             <router-link to="/dashboard" class="nav-link"><font-awesome-icon :icon="['fas', 'gauge-high']" class="me-2" />Dashboard</router-link>
           </li>
           <li class="nav-item me-3">
-            <router-link to="/devices" class="nav-link"><font-awesome-icon :icon="['fas', 'desktop']" class="me-2"/>Device Overview</router-link>
+            <router-link to="/devices" class="nav-link"><font-awesome-icon :icon="['fas', 'desktop']" class="me-2" />Device Overview</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/download" class="nav-link"><font-awesome-icon :icon="['fas', 'download']" class="me-2"/>Level-0 Data Download</router-link>
+            <router-link to="/download" v-bind:exact="$route.path.indexOf('/download') >= 0" :class="{ 'router-link-active router-link-exact-active': $route.path.indexOf('/download') >= 0 }" class="nav-link"><font-awesome-icon :icon="['fas', 'download']" class="me-2" />Level-0 Data Download</router-link>
           </li>
         </ul>
       </div>
@@ -26,6 +26,10 @@
 </template>
 
 <style scoped lang="scss">
+.router-link-active {
+  color: var(--bs-nav-link-hover-color);
+}
+
 nav.navbar {
   background-color: var(--bg-color-dark);
 

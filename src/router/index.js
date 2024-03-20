@@ -1,6 +1,7 @@
 import DashboardView from '@/views/DashboardView.vue'
 import DevicesView from '@/views/DevicesView.vue'
-import Download from '@/views/Download.vue'
+import DownloadView from '@/views/DownloadView.vue'
+import WorkspaceView from '@/views/WorkspaceView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 
@@ -21,7 +22,13 @@ const router = createRouter({
     {
       path: '/download',
       name: "download",
-      component: Download,
+      component: DownloadView
+    },
+    {
+      path: '/download/workspace/:workspaceId',
+      name: "workspace",
+      component: WorkspaceView,
+      props: true
     },
   ]
 })

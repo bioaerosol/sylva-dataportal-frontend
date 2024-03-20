@@ -2,7 +2,7 @@
   <form class="row">
     <div class="col-12 col-md-6">
       <label for="devices" class="form-label">Devices</label>
-      <vue-multiselect id="devices" v-if="locations && locations.length > 0" :options="locations" v-model="selectedDevices" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Select devices" group-label="name" group-values="devices" label="_id" track-by="_id" :group-select="true" />
+      <vue-multiselect id="devices" v-if="devices && devices.length > 0" :options="devices" selectLabel="" deselectLabel="" v-model="selectedDevices" :multiple="true" :close-on-select="true" :clear-on-select="false" :searchable="false" placeholder="Select devices" label="_id" track-by="_id" />
     </div>
     <div class="col-12 col-md-6">
       <label for="daterange" class="form-label">Date Range</label><br />
@@ -16,6 +16,7 @@ import VueMultiselect from 'vue-multiselect'
 import DateRangePicker from 'vue3-daterange-picker'
 import '@/assets/vue-multiselect.scss'
 import { DateTime } from 'luxon'
+import * as _ from 'lodash-es'
 </script>
 
 <script>
@@ -33,6 +34,11 @@ export default {
         startDate: new Date(),
         endDate: new Date()
       }
+    }
+  },
+  computed: {
+    devices() {
+      return _.flatMap(this.locations, 'devices')
     }
   },
   methods: {

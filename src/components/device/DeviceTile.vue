@@ -3,19 +3,14 @@
     <div class="d-flex justify-content-between">
       <span>{{ device._id }}</span>
       <span>
-        <span class="badge rounded-pill text-bg-secondary" :class="device.type">{{ device.type }}</span>
-        <span class="ms-2">
-          <span v-if="hoursAgo(device) < 24" class="badge rounded-pill text-bg-success">online</span>
-          <span v-else class="badge rounded-pill text-bg-danger">offline</span>
-        </span>
+        <device-type-badge :device="device" />
+        <span class="ms-2"><device-data-availability-info :device="device" :showOnlineOffline="true" :showDataAvailability="false" /></span>
       </span>
     </div>
     <div class="mt-3">
       <div class="subheader">Data Availability</div>
       <div class="subtext">
-        <font-awesome-icon :icon="['far', 'calendar-days']" class="me-1" /> {{ DateTime.fromISO(device.dataStart).setLocale('en-gb').toLocaleString() }} &ndash; {{ DateTime.fromISO(device.dataEnd).setLocale('en-gb').toLocaleString() }}
-        <br />
-        <span> Last data received {{ Math.floor(hoursAgo(device)) }} hours and {{ Math.round((hoursAgo(device) % 1) * 60) }} minutes ago. </span>
+        <device-data-availability-info :device="device" :showOnlineOffline="false" :showDataAvailability="true" />
       </div>
     </div>
     <div class="mt-3">
@@ -56,13 +51,6 @@ export default {
     totalSize: function () {
       return formatGiBs(bytesToGibs(this.timelineData.reduce((acc, tld) => acc + tld.size, 0)))
     }
-  },
-  methods: {
-    hoursAgo: function (device) {
-      const now = DateTime.now()
-      const dataEnd = DateTime.fromISO(device.dataEnd)
-      return now.diff(dataEnd, 'hours').hours
-    }
   }
 }
 </script>
@@ -86,15 +74,6 @@ div.subtext {
   color: var(--bs-secondary);
   margin-left: 1em;
 }
-
-.badge {
-  &.BAA500 {
-    background-color: purple !important;
-  }
-  &.Poleno {
-    background-color: rgb(174, 111, 2) !important;
-  }
-}
 </style>
 
 <script setup>
@@ -105,4 +84,6 @@ import { bytesToGibs } from '@/utils/Converter'
 import { formatGiBs } from '@/utils/Fomatter'
 import { fillMissing } from '@/utils/Date'
 import * as _ from 'lodash-es'
+import DeviceTypeBadge from '@/components/device/DeviceTypeBadge.vue'
+import DeviceDataAvailabilityInfo from '@/components/device/DeviceDataAvailabilityInfo.vue'
 </script>

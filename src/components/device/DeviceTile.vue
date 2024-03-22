@@ -19,6 +19,11 @@
         <b>Total</b>: {{ totalSize }}
         <storage-by-month-chart class="mt-2" :timelineData="timelineData" />
       </div>
+      <div class="mt-3">
+        <router-link :to="{ name: 'device', params: { deviceId: device._id }}" custom v-slot="{ navigate }">
+          <button class="btn btn-outline-secondary btn-sm w-100" @click="navigate" @keypress.enter="navigate" role="link"><font-awesome-icon :icon="['fas', 'chart-line']" class="me-2"/> Device Storage Details</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>

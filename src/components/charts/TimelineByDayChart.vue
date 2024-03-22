@@ -8,7 +8,7 @@ import { bytesToGibs } from '@/utils/Converter'
 </script>
 
 <template>
-  <line-chart v-if="dataValid" :data="chartData" :options="options" />
+  <line-chart v-if="dataValid" :data="chartData" :options="options" class="w-100"/>
 </template>
 
 <script>
@@ -20,18 +20,11 @@ export default {
   },
   props: {
     timelineData: Array,
-    from: {
-      type: DateTime,
-      required: true
-    },
-    to: {
-      type: DateTime,
-      required: true
-    }
+    
   },
   computed: {
     dataValid: function () {
-      return this.timelineData.length > 0 && this.from && this.to
+      return this.timelineData && this.timelineData.length
     },
     chartData: function () {
       const sortedData = _.sortBy(this.timelineData, 'date')
@@ -63,7 +56,8 @@ export default {
             order: 0,
             yAxisID: 'yCount',
             borderColor: 'rgb(217, 16, 115)',
-            pointRadius: 0
+            pointRadius: 0,
+            borderWidth: 1
           }
         ]
       }
@@ -73,7 +67,8 @@ export default {
     return {
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 6,
         scales: {
           x: {
             adapters: {

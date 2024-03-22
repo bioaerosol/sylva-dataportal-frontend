@@ -1,4 +1,5 @@
 import DashboardView from '@/views/DashboardView.vue'
+import DeviceView from '@/views/DeviceView.vue'
 import DevicesView from '@/views/DevicesView.vue'
 import DownloadView from '@/views/DownloadView.vue'
 import WorkspaceView from '@/views/WorkspaceView.vue'
@@ -18,6 +19,12 @@ const router = createRouter({
       path: '/devices',
       name: 'devices',
       component: DevicesView
+    },
+    {
+      path: '/devices/:deviceId',
+      name: 'device',
+      component: DeviceView,
+      props: true
     },
     {
       path: '/download',

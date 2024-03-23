@@ -1,6 +1,6 @@
 import DashboardView from '@/views/DashboardView.vue'
 import DeviceView from '@/views/DeviceView.vue'
-import DevicesView from '@/views/DevicesView.vue'
+import LocationsView from '@/views/LocationsView.vue'
 import DownloadView from '@/views/DownloadView.vue'
 import WorkspaceView from '@/views/WorkspaceView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -16,9 +16,9 @@ const router = createRouter({
     },
     {
       alias: '/',
-      path: '/devices',
-      name: 'devices',
-      component: DevicesView
+      path: '/locations',
+      name: 'locations',
+      component: LocationsView
     },
     {
       path: '/devices/:deviceId',

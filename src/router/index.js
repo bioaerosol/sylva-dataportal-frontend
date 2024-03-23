@@ -10,12 +10,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      alias: '/',
       path: '/dashboard',
       name: "dashboard",
       component: DashboardView,
     },
     {
-      alias: '/',
       path: '/locations',
       name: 'locations',
       component: LocationsView

@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .badge {
   &.BAA500 {
-    background-color: purple !important;
+    background-color: rgb(123, 0, 130) !important;
   }
   &.Poleno {
     background-color: rgb(174, 111, 2) !important;

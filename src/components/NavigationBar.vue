@@ -14,7 +14,7 @@
             <router-link to="/dashboard" class="nav-link"><font-awesome-icon :icon="['fas', 'gauge-high']" class="me-2" />Dashboard</router-link>
           </li>
           <li class="nav-item me-3">
-            <router-link to="/locations" class="nav-link"><font-awesome-icon :icon="['fas', 'map-location-dot']" class="me-2" />Device Overview</router-link>
+            <router-link to="/locations" class="nav-link"><font-awesome-icon :icon="['fas', 'map-location-dot']" class="me-2" />Location Overview</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/download" v-bind:exact="$route.path.indexOf('/download') >= 0" :class="{ 'router-link-active router-link-exact-active': $route.path.indexOf('/download') >= 0 }" class="nav-link"><font-awesome-icon :icon="['fas', 'download']" class="me-2" />Level-0 Data Download</router-link>

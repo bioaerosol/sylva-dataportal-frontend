@@ -1,7 +1,6 @@
 <script setup>
 import { CategoryScale, Chart as ChartJS, Filler, LineElement, LinearScale, PointElement, TimeScale } from 'chart.js'
 import { Line } from 'vue-chartjs'
-import { DateTime } from 'luxon'
 import * as _ from 'lodash-es'
 import 'chartjs-adapter-luxon'
 import { bytesToGibs } from '@/utils/Converter'
@@ -66,8 +65,16 @@ export default {
   data() {
     return {
       options: {
-        responsive: true,
-        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: false
+          }
+        },
+        responsive: false,
+        maintainAspectRatio: false,
         aspectRatio: 6,
         scales: {
           x: {

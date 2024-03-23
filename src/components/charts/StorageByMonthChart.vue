@@ -34,6 +34,14 @@ export default {
   data() {
     return {
       options: {
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: false
+          }
+        },
         responsive: true,
         datasets: {
           line: {

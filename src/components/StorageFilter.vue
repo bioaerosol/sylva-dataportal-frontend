@@ -63,7 +63,7 @@ export default {
     },
     devices: function () {
       if (this.preselectedDeviceIds) {
-        this.selectedDevices = _.filter(this.devices, (device) => { console.log(device); return this.preselectedDeviceIds.includes(device._id)})
+        this.selectedDevices = _.filter(this.devices, (device) => this.preselectedDeviceIds.includes(device._id))
       }
     }
   }

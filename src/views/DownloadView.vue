@@ -2,7 +2,7 @@
   <div class="card mt-4">
     <div class="row card-body">
       <div class="col-12">
-        <storage-filter :locations="locations" v-on:filter="filter($event)"></storage-filter>
+        <storage-filter :locations="locations" :preselectedDeviceIds="preselectedDevices" v-on:filter="filter($event)"></storage-filter>
       </div>
     </div>
   </div>
@@ -52,7 +52,6 @@ import {WorkspaceRepository} from '@/repositories/WorkspaceRepository'
 
 <script>
 export default {
-  components: {},
   data: () => {
     return {
       locations: [],
@@ -62,10 +61,15 @@ export default {
       totalSize: 0,
       loading: false,
       downloadToken: null,
-      downloadError: false
+      downloadError: false,
+      preselectedDevices: []
     }
   },
   mounted: function () {
+    if (this.$route.query.devices) {
+      this.preselectedDevices = this.$route.query.devices.split(',')
+    }
+    
     new LocationsRepository().getAll().then((response) => {
       this.locations = _.sortBy(response, ['country', 'name'])
     })

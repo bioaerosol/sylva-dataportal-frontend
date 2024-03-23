@@ -25,14 +25,18 @@ export default {
     locations: {
       type: Array,
       required: false
+    },
+    preselectedDeviceIds: {
+      type: Array,
+      required: false
     }
   },
   data: () => {
     return {
       selectedDevices: [],
       dateRange: {
-        startDate: new Date(),
-        endDate: new Date()
+        startDate: DateTime.now().setZone("utc").minus({ days: 6 }).startOf("day").toJSDate(),
+        endDate: DateTime.now().setZone("utc").toJSDate()
       }
     }
   },
@@ -56,6 +60,11 @@ export default {
     },
     dateRange: function () {
       this.emitFilters()
+    },
+    devices: function () {
+      if (this.preselectedDeviceIds) {
+        this.selectedDevices = _.filter(this.devices, (device) => { console.log(device); return this.preselectedDeviceIds.includes(device._id)})
+      }
     }
   }
 }

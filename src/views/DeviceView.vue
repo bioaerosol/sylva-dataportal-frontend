@@ -43,9 +43,13 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-12">
+    <div class="col-12 d-flex justify-content-between">
       <router-link :to="{ name: 'locations' }" custom v-slot="{ navigate }">
         <button class="btn btn-outline-secondary btn-sm" @click="navigate" @keypress.enter="navigate" role="link"><font-awesome-icon :icon="['fas', 'backward']" class="me-2" /> Locations Overview</button>
+      </router-link>
+
+      <router-link :to="{ name: 'download', query: { devices: deviceId } }" custom v-slot="{ navigate }">
+        <button class="btn btn-primary btn-sm" @click="navigate" @keypress.enter="navigate" role="link"><font-awesome-icon :icon="['fas', 'download']" class="me-2" /> Download Data</button>
       </router-link>
     </div>
   </div>

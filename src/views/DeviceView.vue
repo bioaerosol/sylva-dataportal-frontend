@@ -1,5 +1,5 @@
 <template>
-  <div v-if="location && device" class="card mt-4">
+  <div v-if="location && device" class="card mt-4 header">
     <div class="row card-body">
       <div class="col-12">
         <h5 class="card-title d-flex justify-content-between">
@@ -11,13 +11,33 @@
           <div><device-data-availability-info :device="device" :showOnlineOffline="true" :showDataAvailability="false" /></div>
           <div class="mt-3"><device-data-availability-info :device="device" :showOnlineOffline="false" :showDataAvailability="true" /></div>
         </div>
-        <div class="mt-5">
-          <h6>Level-0 Data Timeline</h6>
+      </div>
+    </div>
+  </div>
+  <div v-if="timelineData" class="card mt-4">
+    <div class="row card-body">
+      <div class="col-12">
+        <h5 class="card-title">Level-0 Data Storage</h5>
+        <div class="text-center">
+        <div class="btn-group w-50 " role="group" aria-label="Basic radio toggle button group">
+          <label class="btn btn-outline-dark btn-sm" for="displayChartHeatMap" :class="{ active: displayChart == DISPLAY_CHART.HEATMAP }">
+            <input type="radio" class="btn-check" name="btnradio" id="displayChartHeatMap" autocomplete="off" :value="DISPLAY_CHART.HEATMAP" v-model="displayChart" />
+            <font-awesome-icon :icon="['fas', 'fire']" class="me-2"/>Heat Map
+          </label>
+
+          <label class="btn btn-outline-dark btn-sm" for="displayChartTimeline" :class="{ active: displayChart == DISPLAY_CHART.TIMELINE }">
+            <input type="radio" class="btn-check" name="btnradio" id="displayChartTimeline" autocomplete="off" :value="DISPLAY_CHART.TIMELINE" v-model="displayChart" />
+            <font-awesome-icon :icon="['fas', 'chart-line']" class="me-2"/>Timeline
+          </label>
+        </div>
+        </div>
+        <div v-if="displayChart == DISPLAY_CHART.TIMELINE" class="mt-5">
+          <h6>Timeline</h6>
           <timeline-by-day-chart :timelineData="timelineDataWMissing"></timeline-by-day-chart>
         </div>
-        <div class="mt-5">
-          <h6>Level-0 Data Heat Map</h6>
-          <heat-map v-if="timelineData" :timelineData="timelineData" />
+        <div v-if="displayChart == DISPLAY_CHART.HEATMAP" class="mt-5">
+          <h6>Heat Map</h6>
+          <heat-map :timelineData="timelineData" />
         </div>
       </div>
     </div>
@@ -38,6 +58,11 @@ import { DateTime } from 'luxon'
 </script>
 
 <script>
+const DISPLAY_CHART = {
+  TIMELINE: 'timeline',
+  HEATMAP: 'heatmap'
+}
+
 export default {
   components: {},
   props: {
@@ -47,7 +72,8 @@ export default {
     return {
       location: null,
       device: null,
-      timelineData: null
+      timelineData: null,
+      displayChart: DISPLAY_CHART.HEATMAP
     }
   },
   computed: {
@@ -95,3 +121,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.card.header {
+  background-color: var(--bs-light);
+}
+</style>

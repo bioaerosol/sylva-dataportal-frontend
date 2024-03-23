@@ -19,17 +19,17 @@
       <div class="col-12">
         <h5 class="card-title">Level-0 Data Storage</h5>
         <div class="text-center">
-        <div class="btn-group w-50 " role="group" aria-label="Basic radio toggle button group">
-          <label class="btn btn-outline-dark btn-sm" for="displayChartHeatMap" :class="{ active: displayChart == DISPLAY_CHART.HEATMAP }">
-            <input type="radio" class="btn-check" name="btnradio" id="displayChartHeatMap" autocomplete="off" :value="DISPLAY_CHART.HEATMAP" v-model="displayChart" />
-            <font-awesome-icon :icon="['fas', 'fire']" class="me-2"/>Heat Map
-          </label>
+          <div class="btn-group w-50" role="group" aria-label="Basic radio toggle button group">
+            <label class="btn btn-outline-dark btn-sm" for="displayChartHeatMap" :class="{ active: displayChart == DISPLAY_CHART.HEATMAP }">
+              <input type="radio" class="btn-check" name="btnradio" id="displayChartHeatMap" autocomplete="off" :value="DISPLAY_CHART.HEATMAP" v-model="displayChart" />
+              <font-awesome-icon :icon="['fas', 'fire']" class="me-2" />Heat Map
+            </label>
 
-          <label class="btn btn-outline-dark btn-sm" for="displayChartTimeline" :class="{ active: displayChart == DISPLAY_CHART.TIMELINE }">
-            <input type="radio" class="btn-check" name="btnradio" id="displayChartTimeline" autocomplete="off" :value="DISPLAY_CHART.TIMELINE" v-model="displayChart" />
-            <font-awesome-icon :icon="['fas', 'chart-line']" class="me-2"/>Timeline
-          </label>
-        </div>
+            <label class="btn btn-outline-dark btn-sm" for="displayChartTimeline" :class="{ active: displayChart == DISPLAY_CHART.TIMELINE }">
+              <input type="radio" class="btn-check" name="btnradio" id="displayChartTimeline" autocomplete="off" :value="DISPLAY_CHART.TIMELINE" v-model="displayChart" />
+              <font-awesome-icon :icon="['fas', 'chart-line']" class="me-2" />Timeline
+            </label>
+          </div>
         </div>
         <div v-if="displayChart == DISPLAY_CHART.TIMELINE" class="mt-5">
           <h6>Timeline</h6>
@@ -42,7 +42,13 @@
       </div>
     </div>
   </div>
-  
+  <div class="row mt-3">
+    <div class="col-12">
+      <router-link :to="{ name: 'locations' }" custom v-slot="{ navigate }">
+        <button class="btn btn-outline-secondary btn-sm" @click="navigate" @keypress.enter="navigate" role="link"><font-awesome-icon :icon="['fas', 'backward']" class="me-2" /> Locations Overview</button>
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script setup>

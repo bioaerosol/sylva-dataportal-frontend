@@ -13,7 +13,7 @@
     <div class="row card-body">
       <div class="col-12">
         <div v-if="fileCount === 0" class="alert alert-warning mt-5" role="alert"><font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="me-2" />No data available for the selected filter.</div>
-        <div v-else-if="timelineData.length > 2" class="chart mt-5 mb-3">
+        <div v-else-if="timelineData.length > 2" class="chart">
           <timeline-by-day-chart v-if="currentFilter && timelineData" :from="currentFilter.from" :to="currentFilter.to" :timelineData="timelineData"></timeline-by-day-chart>
         </div>
       </div>

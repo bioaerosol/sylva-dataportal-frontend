@@ -5,10 +5,9 @@
         <h5 class="card-title d-flex justify-content-between">
           <location-title :location="location" />
           {{ device._id }}
-          <device-type-badge :device="device" />
         </h5>
         <div class="card-text text-center mt-3">
-          <div><device-data-availability-info :device="device" :showOnlineOffline="true" :showDataAvailability="false" /></div>
+          <div><device-type-badge :device="device" class="me-2" /><device-data-availability-info :device="device" :showOnlineOffline="true" :showDataAvailability="false" /></div>
           <div class="mt-3"><device-data-availability-info :device="device" :showOnlineOffline="false" :showDataAvailability="true" /></div>
         </div>
       </div>

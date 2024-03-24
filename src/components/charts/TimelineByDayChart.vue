@@ -7,7 +7,9 @@ import { bytesToGibs } from '@/utils/Converter'
 </script>
 
 <template>
-  <line-chart v-if="dataValid" :data="chartData" :options="options" class="w-100"/>
+  <div>
+    <line-chart v-if="dataValid" :data="chartData" :options="options" />
+  </div>
 </template>
 
 <script>
@@ -18,8 +20,7 @@ export default {
     'line-chart': Line
   },
   props: {
-    timelineData: Array,
-    
+    timelineData: Array
   },
   computed: {
     dataValid: function () {
@@ -73,9 +74,9 @@ export default {
             enabled: false
           }
         },
-        responsive: false,
-        maintainAspectRatio: false,
+        responsive: true,
         aspectRatio: 6,
+        keepAspectRatio: true,
         scales: {
           x: {
             adapters: {
@@ -98,7 +99,7 @@ export default {
             title: {
               text: 'Total Size (GiB)',
               display: true,
-              color: "rgb(128, 171, 0)"
+              color: 'rgb(128, 171, 0)'
             },
             grid: {
               display: false
@@ -110,7 +111,7 @@ export default {
             title: {
               text: 'File Count',
               display: true,
-              color: "rgb(217, 16, 115)"
+              color: 'rgb(217, 16, 115)'
             },
             grid: {
               display: false

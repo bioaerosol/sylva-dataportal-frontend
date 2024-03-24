@@ -18,7 +18,7 @@
         </router-link>
       </div>
     </div>
-    <div class="col-12 col-md-6 mt-3 text-center">
+    <div class="col-12 col-md-6 mt-3 mb-5 text-center">
       <div class="card ms-0 ms-md-3">
         <h2 class="mt-2 mb-3">Devices by Type</h2>
         

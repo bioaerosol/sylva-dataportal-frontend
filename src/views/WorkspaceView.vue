@@ -15,7 +15,7 @@
       </div>
 
       <div v-if="workspace.status == WorkspaceStatus.Provided" class="col-12">
-        <div class="hugeicon mb-3">
+        <div class="hugeicon mb-3 done">
           <font-awesome-icon :icon="['far', 'square-check']" />
         </div>
         <h6>We have prepared your {{ workspace.fileCount }} files with a total size of {{ bytesToGibs(workspace.totalSize, true) }} GiB.</h6>
@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 a {
   text-decoration: none;
 }
@@ -86,6 +86,10 @@ a {
   font-size: 3em;
   color: var(--bs-secondary);
   text-align: center;
+
+  &.done {
+    color: var(--bs-success);
+  }
 }
 
 h6,

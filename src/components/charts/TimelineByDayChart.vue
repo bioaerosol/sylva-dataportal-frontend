@@ -7,7 +7,7 @@ import { bytesToGibs } from '@/utils/Converter'
 </script>
 
 <template>
-  <div>
+  <div class="chart">
     <line-chart v-if="dataValid" :data="chartData" :options="options" />
   </div>
 </template>
@@ -75,8 +75,9 @@ export default {
           }
         },
         responsive: true,
-        aspectRatio: 6,
+        aspectRatio: window.innerWidth / window.innerHeight * 3,
         keepAspectRatio: true,
+        maintainAspectRatio: false,
         scales: {
           x: {
             adapters: {
@@ -127,3 +128,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.chart {
+  height: 30vh;
+}
+</style>

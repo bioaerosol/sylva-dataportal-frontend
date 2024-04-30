@@ -1,5 +1,7 @@
 <template>
-  <Chart v-if="chartInputData" ref="myChart" :options="chartOptions" :data="chartData" class="w-100" />
+  <div class="chart">
+    <Chart v-if="chartInputData" ref="myChart" :options="chartOptions" :data="chartData" />
+  </div>
   <div class="flex d-flex justify-content-between mt-3">
     <button class="btn btn-secondary btn-sm" @click="prev" :disabled="!canPrev"><font-awesome-icon :icon="['fas', 'angles-left']" /></button>
 
@@ -25,7 +27,7 @@ const CONTENT = {
   TOTAL_SIZE: 'totalSize'
 }
 
-const DISPLAY_WEEK_COUNT = 42
+let DISPLAY_WEEK_COUNT = window.innerWidth * 42 / 1920
 const MatrixChart = createTypedChart('matrix', MatrixController)
 
 export default {
@@ -59,8 +61,14 @@ export default {
           }
         },
         responsive: true,
-        aspectRatio: 6,
+        aspectRatio: window.innerWidth / window.innerHeight * 3,
         keepAspectRatio: true,
+        maintainAspectRatio: false,
+        onResize: () => {
+          DISPLAY_WEEK_COUNT = Math.round(window.innerWidth * 42 / 1920)
+          this.displayFrom = DateTime.now({ zone: 'utc', setZone: true }).minus({ weeks: DISPLAY_WEEK_COUNT }).startOf('week')
+          this.displayTo = DateTime.now({ zone: 'utc', setZone: true }).endOf('week')
+        },
         scales: {
           y: {
             offset: true,
@@ -223,7 +231,7 @@ export default {
 
 <style scoped>
 .chart {
-  height: 200px !important;
+  height: 30vh;
 }
 </style>
 

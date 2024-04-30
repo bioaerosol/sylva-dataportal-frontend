@@ -2,10 +2,10 @@
   <div v-if="location && device" class="card mt-4 header">
     <div class="row card-body">
       <div class="col-12">
-        <h5 class="card-title d-flex justify-content-between">
-          <location-title :location="location" />
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title"><location-title :location="location" /></h5>
           {{ device._id }}
-        </h5>
+        </div>
         <div class="card-text text-center mt-3">
           <div><device-type-badge :device="device" class="me-2" /><device-data-availability-info :device="device" :showOnlineOffline="true" :showDataAvailability="false" /></div>
           <div class="mt-3"><device-data-availability-info :device="device" :showOnlineOffline="false" :showDataAvailability="true" /></div>
@@ -18,7 +18,7 @@
       <div class="col-12">
         <h5 class="card-title">Level-0 Data Storage</h5>
         <div class="text-center">
-          <div class="btn-group w-50" role="group" aria-label="Basic radio toggle button group">
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <label class="btn btn-outline-dark btn-sm" for="displayChartHeatMap" :class="{ active: displayChart == DISPLAY_CHART.HEATMAP }">
               <input type="radio" class="btn-check" name="btnradio" id="displayChartHeatMap" autocomplete="off" :value="DISPLAY_CHART.HEATMAP" v-model="displayChart" />
               <font-awesome-icon :icon="['fas', 'fire']" class="me-2" />Heat Map

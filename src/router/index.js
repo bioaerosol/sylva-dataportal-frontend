@@ -4,6 +4,7 @@ import LocationsView from '@/views/LocationsView.vue'
 import DownloadView from '@/views/DownloadView.vue'
 import WorkspaceView from '@/views/WorkspaceView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import ReferenceDatasetsView from '@/views/ReferenceDatasetsView.vue'
 
 
 const router = createRouter({
@@ -30,6 +31,11 @@ const router = createRouter({
       path: '/download',
       name: "download",
       component: DownloadView
+    },
+    {
+      path: '/referenceDatasets',
+      name: "referenceDatasets",
+      component: ReferenceDatasetsView
     },
     {
       path: '/download/workspace/:workspaceId',

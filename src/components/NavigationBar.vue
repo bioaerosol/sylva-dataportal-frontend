@@ -19,6 +19,9 @@
           <li class="nav-item">
             <router-link to="/download" v-bind:exact="$route.path.indexOf('/download') >= 0" :class="{ 'router-link-active router-link-exact-active': $route.path.indexOf('/download') >= 0 }" class="nav-link"><font-awesome-icon :icon="['fas', 'download']" class="me-2" />Level-0 Data Download</router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/referenceDatasets" v-bind:exact="$route.path.indexOf('/referenceDatasets') >= 0" :class="{ 'router-link-active router-link-exact-active': $route.path.indexOf('/referenceDatasets') >= 0 }" class="nav-link"><font-awesome-icon :icon="['fas', 'check-to-slot']" class="me-2" />Reference Datasets</router-link>
+          </li>
         </ul>
       </div>
     </div>

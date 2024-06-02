@@ -11,7 +11,9 @@ import NavigationBar from '@/components/NavigationBar.vue'
     </div>
     <div class="row mt-3">
       <div class="col-12">
-        <RouterView />
+        <main>
+          <RouterView />
+        </main>
       </div>
     </div>
   </div>

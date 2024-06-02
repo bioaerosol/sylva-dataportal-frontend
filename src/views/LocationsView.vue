@@ -5,9 +5,8 @@ import * as _ from 'lodash-es'
 </script>
 
 <template>
-  <main>
-    <LocationsList :locations="locations" />
-  </main>
+  <h1>Location Overview</h1>
+  <LocationsList :locations="locations" />
 </template>
 
 <script>

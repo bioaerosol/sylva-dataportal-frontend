@@ -3,3 +3,8 @@
 :root {
   --bg-color-dark: #252f3f;
 }
+
+h1 {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}

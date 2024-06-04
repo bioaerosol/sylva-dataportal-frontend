@@ -5,6 +5,8 @@ import DownloadView from '@/views/DownloadView.vue'
 import WorkspaceView from '@/views/WorkspaceView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import ReferenceDatasetsView from '@/views/ReferenceDatasetsView.vue'
+import AlgorithmsView from '../views/AlgorithmsView.vue'
+import AlgorithmRunView from '@/views/AlgorithmRunView.vue'
 
 
 const router = createRouter({
@@ -36,6 +38,17 @@ const router = createRouter({
       path: '/referenceDatasets',
       name: "referenceDatasets",
       component: ReferenceDatasetsView
+    },
+    {
+      path: '/algorithms',
+      name: "algorithms",
+      component: AlgorithmsView
+    },
+    {
+      path: '/algorithms/run/:runOrderId/:runId',
+      name: "algorithmRun",
+      component: AlgorithmRunView,
+      props: true
     },
     {
       path: '/download/workspace/:workspaceId',

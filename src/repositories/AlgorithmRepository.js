@@ -61,6 +61,10 @@ class AlgorithmRepository {
     
         return _deferred.promise()
       }
+
+      getOutputFileLink(runOrderId, runId, filePath) {
+        return this.target + "/runOrders/" + runOrderId + "/runs/" + runId + "/files/" + filePath
+      }
 }
 
 export { AlgorithmRepository }

@@ -6,14 +6,14 @@
           <td>{{ formatDateTime(run.start) }}</td>
           <td>{{ formatDateTime(run.end) }}</td>
           <td class="text-end">
-            <status-badge :status="run.status" />
+            <status-badge :status="run.status" class="status" />
           </td>
-          <td>
-            <router-link :to="{ name: 'algorithmRun', params: { runOrderId: runOrderId, runId: run._id } }" class="loglink">Show Logs</router-link>
-          </td>
-          <td>
-            Show Results
-            <!--<router-link :to="{ name: 'dashboard', params: { id: run._id } }" class="loglink">Show Results</router-link>-->
+          <td class="text-end">
+            <router-link :to="{ name: 'algorithmRun', params: { runOrderId: runOrderId, runId: run._id } }" custom v-slot="{ navigate }">
+              <button class="btn btn-outline-secondary btn-sm" @click="navigate" @keypress.enter="navigate" role="link">
+                <font-awesome-icon :icon="['fas', 'asterisk']" class="me-2" />Open Details
+              </button>
+            </router-link>
           </td>
         </tr>
       </tbody>
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style scoped> 
-.loglink {
-    text-decoration: none;
+.status {
+    width: 80px;
 }
 </style>

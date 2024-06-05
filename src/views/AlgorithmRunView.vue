@@ -1,7 +1,7 @@
 <template>
   <h1>Algorithms</h1>
   <h2 class="d-flex justify-content-between" v-if="runOrder && run">
-    <span>Log of {{ runOrder.algorithm }}</span>
+    <span>{{ runOrder.algorithm }}</span>
     <span><status-badge :status="run.status" /></span>
   </h2>
   <p v-if="runOrder">
@@ -23,7 +23,27 @@
     </table>
   </p>
 
-  <algorithm-log :sections="run.sections" />
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="log-tab" data-bs-toggle="tab" data-bs-target="#log" type="button" role="tab" aria-controls="log" aria-selected="true">
+        <font-awesome-icon :icon="['fas', 'terminal']" class="me-2" />Log
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="files-tab" data-bs-toggle="tab" data-bs-target="#files" type="button" role="tab" aria-controls="files" aria-selected="false">
+        <font-awesome-icon :icon="['fas', 'folder']" class="me-2" />Output Files
+      </button>
+    </li>
+  </ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane show active" id="log" role="tabpanel" aria-labelledby="log-tab">
+    <algorithm-log :sections="run.sections" />
+  </div>
+  <div class="tab-pane" id="files" role="tabpanel" aria-labelledby="files-tab">
+    <algorithm-output-files :runOrderId="runOrderId" :runId="runId" :outputFiles="run.outputFiles" />
+  </div>
+</div>
 
   <router-link :to="{ name: 'algorithms' }" custom v-slot="{ navigate }">
     <button class="btn btn-outline-secondary btn-sm mt-5" @click="navigate" @keypress.enter="navigate" role="link"><font-awesome-icon :icon="['fas', 'backward']" class="me-2" /> All Algorithms</button>
@@ -34,6 +54,7 @@
 import StatusBadge from '@/components/StatusBadge.vue'
 import { AlgorithmRepository } from '@/repositories/AlgorithmRepository'
 import AlgorithmLog from '@/components/algorithm/AlgorithmLog.vue'
+import AlgorithmOutputFiles from '@/components/algorithm/AlgorithmOutputFiles.vue'
 import _ from 'lodash-es'
 import { DateTime } from 'luxon'
 </script>
@@ -69,3 +90,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.tab-pane {
+  padding: 10px;
+}
+</style>

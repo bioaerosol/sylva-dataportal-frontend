@@ -8,6 +8,7 @@
 <script setup>
 import { AlgorithmRepository } from '@/repositories/AlgorithmRepository'
 import AlgorithmList from '@/components/algorithm/AlgorithmList.vue'
+import semver from 'semver'
 </script>
 <script>
 
@@ -17,7 +18,19 @@ import AlgorithmList from '@/components/algorithm/AlgorithmList.vue'
     }),
     mounted: function() {
       new AlgorithmRepository().getRunOrders().then((response) => {
-        this.algorithms = response
+        this.algorithms = response.sort((a, b) => {
+          
+          const va = a.algorithmVersion
+          const vb = b.algorithmVersion
+
+          if (semver.gt(va, vb)) {
+             return -1;
+           } else if (semver.lt(va, vb)) {
+             return 1;
+           } else {
+             return 0;
+           }
+        })
       })
     }
   }

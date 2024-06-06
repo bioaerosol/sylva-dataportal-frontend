@@ -1,3 +1,5 @@
+import { DateTime } from "luxon"
+
 const fillMissing = (/** @type Array */ data, /** @type string */ dateField, /** @type DateTime */ fromIncl, /** @type DateTime */ toIncl, /** @type string */ stepSize) => {
 
     const steps = toIncl.diff(fromIncl, stepSize).get(stepSize)
@@ -13,6 +15,10 @@ const fillMissing = (/** @type Array */ data, /** @type string */ dateField, /**
     return data
 }
 
+const formatFullFromEpoch = (/** @type number */ epoch) => {
+    return DateTime.fromMillis(epoch * 1000).setLocale(import.meta.env.VITE_LOCALE).toLocaleString(DateTime.DATETIME_MED)
+}
+
 export {
-    fillMissing
+    fillMissing, formatFullFromEpoch
 }

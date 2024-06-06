@@ -34,27 +34,33 @@
         <font-awesome-icon :icon="['fas', 'folder']" class="me-2" />Output Files
       </button>
     </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="concentration-tab" data-bs-toggle="tab" data-bs-target="#concentration" type="button" role="tab" aria-controls="concentration" aria-selected="false">
+        <font-awesome-icon :icon="['fas', 'table-list']" class="me-2" />Output Concentrations
+      </button>
+    </li>
   </ul>
 
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane show active" id="log" role="tabpanel" aria-labelledby="log-tab">
-    <algorithm-log :sections="run.sections" />
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane show active" id="log" role="tabpanel" aria-labelledby="log-tab">
+      <algorithm-log :sections="run.sections" />
+    </div>
+    <div class="tab-pane" id="files" role="tabpanel" aria-labelledby="files-tab">
+      <algorithm-output-files :runOrderId="runOrderId" :runId="runId" :outputFiles="run.outputFiles" />
+    </div>
+    <div class="tab-pane" id="concentration" role="tabpanel" aria-labelledby="concentration-tab">
+      <algorithm-output-concentrations :runOrderId="runOrderId" :runId="runId" :outputFiles="run.outputFiles" />
+    </div>
   </div>
-  <div class="tab-pane" id="files" role="tabpanel" aria-labelledby="files-tab">
-    <algorithm-output-files :runOrderId="runOrderId" :runId="runId" :outputFiles="run.outputFiles" />
-  </div>
-</div>
-
-  <router-link :to="{ name: 'algorithms' }" custom v-slot="{ navigate }">
-    <button class="btn btn-outline-secondary btn-sm mt-5" @click="navigate" @keypress.enter="navigate" role="link"><font-awesome-icon :icon="['fas', 'backward']" class="me-2" /> All Algorithms</button>
-  </router-link>
+  
 </template>
 
 <script setup>
 import StatusBadge from '@/components/StatusBadge.vue'
 import { AlgorithmRepository } from '@/repositories/AlgorithmRepository'
-import AlgorithmLog from '@/components/algorithm/AlgorithmLog.vue'
-import AlgorithmOutputFiles from '@/components/algorithm/AlgorithmOutputFiles.vue'
+import AlgorithmLog from '@/components/algorithm/run/AlgorithmLog.vue'
+import AlgorithmOutputFiles from '@/components/algorithm/run/AlgorithmOutputFiles.vue'
+import AlgorithmOutputConcentrations from '@/components/algorithm/run/AlgorithmOutputConcentrations.vue'
 import _ from 'lodash-es'
 import { DateTime } from 'luxon'
 </script>
@@ -94,5 +100,6 @@ export default {
 <style scoped>
 .tab-pane {
   padding: 10px;
+  margin-top: 2em;
 }
 </style>

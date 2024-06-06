@@ -13,3 +13,11 @@ h2 {
   font-size: 1.5rem;
   padding-bottom: 1rem;
 }
+
+.sectionIntro {
+  padding: 1rem;
+  background-color: #efefef;
+  border-left: 3px solid var(--bg-color-dark);
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}

@@ -1,5 +1,7 @@
 <template>
-  <h1>Level-0 Data Downlaod</h1>
+  <h1>Level-0 Data Download</h1>
+  <p class="sectionIntro">Level-0 data is stored using long-term storage solutions. This section allows to download level-0 data.</p>
+
   <div class="card mt-4">
     <div class="row card-body">
       <div class="col-12">

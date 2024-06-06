@@ -4,7 +4,7 @@
       <ul class="list-group">
         <li v-for="(runOrders, name) in algorithms" :key="runOrders._id" class="list-group-item d-flex justify-content-between align-items-start">
           <div class="ms-2 w-100">
-            <div class="fw-bold">{{ name }}</div>
+            <div class="fw-bold">Algorithm: {{ name }}</div>
 
             <table class="table w-100 mt-4">
               <thead>

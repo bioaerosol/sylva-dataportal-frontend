@@ -1,8 +1,7 @@
 <template>
   <h1>Algorithms</h1>
-  <p></p>
+  <p class="sectionIntro">SYLVA provides an infrastructure to run algorithms on level-0 data. In this section you can see all known algorithms with detailed run information.</p>
   <algorithm-list :runOrders="algorithms" />
-  
 </template>
 
 <script setup>

@@ -4,7 +4,7 @@
       <tbody>
         <tr v-for="run in runs" :key="run._id">
           <td>{{ formatDateTime(run.start) }}</td>
-          <td>{{ formatDateTime(run.end) }}</td>
+          <td> {{ run.end ? formatDateTime(run.end) : "" }}</td>
           <td class="text-end">
             <status-badge :status="run.status" class="status" />
           </td>

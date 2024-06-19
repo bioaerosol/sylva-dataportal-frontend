@@ -22,13 +22,17 @@ import semver from 'semver'
           const va = a.algorithmVersion
           const vb = b.algorithmVersion
 
-          if (semver.gt(va, vb)) {
-             return -1;
-           } else if (semver.lt(va, vb)) {
-             return 1;
-           } else {
-             return 0;
-           }
+          try {
+            if (semver.gt(va, vb)) {
+              return -1;
+            } else if (semver.lt(va, vb)) {
+              return 1;
+            } else {
+              return 0;
+            }
+          } catch (e) {
+            return 0;
+          }
         })
       })
     }

@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <ul class="list-group">
-        <li v-for="(runOrders, name) in algorithms" :key="runOrders._id" class="list-group-item d-flex justify-content-between align-items-start">
+      <ul class="list-group mb-5" v-for="(runOrders, name) in algorithms" :key="runOrders._id">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
           <div class="ms-2 w-100">
             <div class="fw-bold">Algorithm: {{ name }}</div>
 

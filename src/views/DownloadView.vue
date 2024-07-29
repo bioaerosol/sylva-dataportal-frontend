@@ -26,18 +26,14 @@
   <div class="col-12 mt-4" v-if="validFilter && fileCount > 0">
     <form>
       <div class="row">
-        <div class="col-12 col-lg-6 mb-3">
-          <input type="password" id="tokenInput" class="form-control" placeholder="Enter token" required v-model="downloadToken" />
-          <div class="form-text">The public download of data is currently not supported. Please enter a valid token to download the data.</div>
-        </div>
         <div class="col-12 col-lg-6">
-          <button class="btn btn-primary w-100" v-on:click="download($event)" :disabled="loading || !downloadToken || downloadToken.length === 0">Download {{ fileCount }} files with total of {{ bytesToGibs(totalSize, true) }} GiBs</button>
+          <button class="btn btn-primary w-100" v-on:click="download($event)" :disabled="loading">Download {{ fileCount }} files with total of {{ bytesToGibs(totalSize, true) }} GiBs</button>
         </div>
       </div>
     </form>
   </div>
 
-  <div v-if="downloadError" class="alert alert-danger mt-4" role="alert"><font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="me-2" />Download could not be started. Please check your token.</div>
+  <div v-if="downloadError" class="alert alert-danger mt-4" role="alert"><font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="me-2" />Download could not be started. Please try again later.</div>
 </template>
 
 <script setup>
@@ -63,7 +59,6 @@ export default {
       fileCount: 0,
       totalSize: 0,
       loading: false,
-      downloadToken: null,
       downloadError: false,
       preselectedDevices: []
     }
@@ -124,7 +119,7 @@ export default {
       
       if (this.validFilter && this.fileCount > 0) {
         this.loading = true
-        new WorkspaceRepository().requestWorkspace(_.map(this.currentFilter.devices, '_id'), this.currentFilter.from, this.currentFilter.to, this.downloadToken).then((response) => {
+        new WorkspaceRepository().requestWorkspace(_.map(this.currentFilter.devices, '_id'), this.currentFilter.from, this.currentFilter.to).then((response) => {
           if (response && response.id) {
             this.$router.push({ name: 'workspace', params: { workspaceId: response.id } })
           }

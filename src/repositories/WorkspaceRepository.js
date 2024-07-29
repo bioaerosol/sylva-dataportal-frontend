@@ -26,7 +26,7 @@ class WorkspaceRepository {
       return _deferred.promise()
     }
   
-    requestWorkspace(/** @type object */ deviceId, /** @type DateTime */ from, /** @type DateTime */ to, /** @type string */ token) {
+    requestWorkspace(/** @type object */ deviceId, /** @type DateTime */ from, /** @type DateTime */ to) {
       const _deferred = $.Deferred()
       const _t = this.target
   
@@ -44,8 +44,7 @@ class WorkspaceRepository {
         data: JSON.stringify({
           devices: deviceId,
           from: (from ? from.toISODate() : undefined),
-          to: (to ? to.toISODate() : undefined),
-          token: token
+          to: (to ? to.toISODate() : undefined)
         }),
         headers: {
           Accept: "application/json"

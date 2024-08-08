@@ -9,23 +9,26 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item me-3">
-            <router-link to="/dashboard" class="nav-link"><font-awesome-icon :icon="['fas', 'gauge-high']" class="me-2" />Dashboard</router-link>
-          </li>
-          <li class="nav-item me-3">
-            <router-link to="/locations" class="nav-link"><font-awesome-icon :icon="['fas', 'map-location-dot']" class="me-2" />Locations</router-link>
-          </li>
-          <li class="nav-item me-3">
-            <router-link to="/download" v-bind:exact="$route.path.indexOf('/download') >= 0" :class="{ 'router-link-active router-link-exact-active': $route.path.indexOf('/download') >= 0 }" class="nav-link"><font-awesome-icon :icon="['fas', 'download']" class="me-2" />Level-0 Data</router-link>
-          </li>
-          <li class="nav-item me-3">
-            <router-link to="/referenceDatasets" class="nav-link"><font-awesome-icon :icon="['fas', 'check-to-slot']" class="me-2" />Reference Datasets</router-link>
-          </li>
-          <li class="nav-item me-3">
-            <router-link to="/algorithms" class="nav-link"><font-awesome-icon :icon="['fas', 'rocket']" class="me-2" />Algorithms</router-link>
-          </li>
-        </ul>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item me-3">
+                  <router-link to="https://sylva.bioaerosol.eu/" class="nav-link"><font-awesome-icon :icon="['fas', 'house']" class="me-2" />SYLVA Home</router-link>
+              </li>
+              <li class="nav-item me-3">
+                  <router-link to="/dashboard" class="nav-link"><font-awesome-icon :icon="['fas', 'gauge-high']" class="me-2" />Dashboard</router-link>
+              </li>
+              <li class="nav-item me-3">
+                  <router-link to="/locations" class="nav-link"><font-awesome-icon :icon="['fas', 'map-location-dot']" class="me-2" />Locations</router-link>
+              </li>
+              <li class="nav-item me-3">
+                  <router-link to="/download" v-bind:exact="$route.path.indexOf('/download') >= 0" :class="{ 'router-link-active router-link-exact-active': $route.path.indexOf('/download') >= 0 }" class="nav-link"><font-awesome-icon :icon="['fas', 'download']" class="me-2" />Level-0 Data</router-link>
+              </li>
+              <li class="nav-item me-3">
+                  <router-link to="/referenceDatasets" class="nav-link"><font-awesome-icon :icon="['fas', 'check-to-slot']" class="me-2" />Reference Datasets</router-link>
+              </li>
+              <li class="nav-item me-3">
+                  <router-link to="/algorithms" class="nav-link"><font-awesome-icon :icon="['fas', 'rocket']" class="me-2" />Algorithms</router-link>
+              </li>
+          </ul>
       </div>
     </div>
   </nav>

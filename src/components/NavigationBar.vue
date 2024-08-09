@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item me-3">
-                  <router-link to="https://sylva.bioaerosol.eu/" class="nav-link"><font-awesome-icon :icon="['fas', 'house']" class="me-2" />SYLVA Home</router-link>
+                  <a href="https://sylva.bioaerosol.eu/"><font-awesome-icon :icon="['fas', 'house']" class="me-2" />SYLVA Home</a>
               </li>
               <li class="nav-item me-3">
                   <router-link to="/dashboard" class="nav-link"><font-awesome-icon :icon="['fas', 'gauge-high']" class="me-2" />Dashboard</router-link>

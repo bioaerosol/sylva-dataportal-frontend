@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-12 mb-5">
       <h1>
-        The SYLVA IT Infrastructure currently stores <span class="huge">{{ bytesToTibs(totalSize, true) }}</span> terrabytes of data being delivered by <span class="huge">{{ deviceCount }}</span> devices at <span class="huge">{{ locationCount }}</span> locations.
+        The SYLVA IT Infrastructure currently stores <span class="huge">{{ bytesToTibs(totalSize, true) }}</span> terabytes of data being delivered by <span class="huge">{{ deviceCount }}</span> devices at <span class="huge">{{ locationCount }}</span> locations.
       </h1>
     </div>
   </div>
   <div class="row">
     <div class="col-12 col-md-6 mt-3">
       <div class="card me-0 me-md-3 text-center">
-        <h2 class="mt-2 mb-3">Terrabytes by Year</h2>
+        <h2 class="mt-2 mb-3">Terabytes by Year</h2>
 
         <total-storage-by-year-doughnut-chart :timelineData="timelineData" class="mb-3" />
         

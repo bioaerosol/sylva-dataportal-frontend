@@ -10,7 +10,7 @@
         <font-awesome-icon :icon="['fas', 'file-zipper']" class="card-img-top" />
         <div class="card-body">
           <h5 class="card-title">BAA500</h5>
-          <p class="card-text">Reference datasets of device type BAA500 in version 2024-05-23.</p>
+          <p class="card-text">Reference datasets of device type BAA500.</p>
           <a href="/workspace/referencedatasets/reference_dataset_pomo_20240523.zip" class="btn btn-primary w-100">download (~ 1GiB)</a>
         </div>
       </div>
@@ -20,7 +20,7 @@
         <font-awesome-icon :icon="['fas', 'file-zipper']" class="card-img-top" />
         <div class="card-body">
           <h5 class="card-title">Poleno</h5>
-          <p class="card-text">Reference datasets of device type Poleno in version 2024-06-23.</p>
+          <p class="card-text">Reference datasets of device type Poleno.</p>
           <a href="/workspace/referencedatasets/poleno" class="btn btn-primary w-100">view file list</a>
         </div>
       </div>

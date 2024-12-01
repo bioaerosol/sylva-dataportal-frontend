@@ -41,7 +41,11 @@ Require all granted
 </IfModule>
 
 # security headers
-Header set X-Frame-Options "deny"
+
+# Deny iframe embedding by default, but allow only sylva.bioaerosol.eu
+Header set Content-Security-Policy "frame-ancestors 'self' https://sylva.bioaerosol.eu"
+
+# Additional security headers
 Header set X-Content-Type-Options "nosniff"
 Header set Strict-Transport-Security "max-age=31536000"
 Header set Referrer-Policy "same-origin"

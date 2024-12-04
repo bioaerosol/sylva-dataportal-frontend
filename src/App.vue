@@ -1,5 +1,6 @@
 <script setup>
 import NavigationBar from '@/components/NavigationBar.vue'
+import router from './router';
 </script>
 
 <template>
@@ -18,7 +19,7 @@ import NavigationBar from '@/components/NavigationBar.vue'
     </div>
   </div>
 
-  <div class="container border-top mt-5 ps-5 pe-5 bg-light">
+  <div v-if="!hideFooter" class="container border-top mt-5 ps-5 pe-5 bg-light">
     <footer class="py-5">
       <div class="row">
         <div class="col-12 text-dark">
@@ -38,6 +39,16 @@ import NavigationBar from '@/components/NavigationBar.vue'
 export default {
   components: {
     NavigationBar: NavigationBar
+  },
+  data() {
+    return {
+      hideFooter: true
+    }
+  },
+  mounted: function() {
+    this.$router.isReady().then(() => {
+      this.hideFooter = this.$route.query.hideFooter !== undefined
+    });
   }
 }
 </script>

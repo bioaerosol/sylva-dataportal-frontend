@@ -29,6 +29,8 @@ const flagUrls = {
   ES: new URL('@/assets/flags/ES.png', import.meta.url).href,
   FI: new URL('@/assets/flags/FI.png', import.meta.url).href,
   CH: new URL('@/assets/flags/CH.png', import.meta.url).href,
-  SE: new URL('@/assets/flags/SE.png', import.meta.url).href
+  SE: new URL('@/assets/flags/SE.png', import.meta.url).href,
+  BE: new URL('@/assets/flags/BE.png', import.meta.url).href,
+  FR: new URL('@/assets/flags/FR.png', import.meta.url).href
 }
 </script>

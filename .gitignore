@@ -29,3 +29,4 @@ dist.tar
 *.sw?
 
 *.tsbuildinfo
+/.vs
